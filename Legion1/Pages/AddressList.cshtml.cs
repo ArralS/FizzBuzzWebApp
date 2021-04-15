@@ -12,11 +12,11 @@ namespace Legion1.Pages
 {
     public class AddressListModel : PageModel
     {
-        public FizzBuzz Address { get; set; }
+        public Recent Legion { get; set; }
         public void OnGet()
         {
             var sessionAddress = HttpContext.Session.GetString("SessionAddress");
-            if (sessionAddress != null) Address = JsonConvert.DeserializeObject<FizzBuzz>(sessionAddress);
+            if (sessionAddress != null) Legion = JsonConvert.DeserializeObject<Recent>(sessionAddress);
         }
 
     }

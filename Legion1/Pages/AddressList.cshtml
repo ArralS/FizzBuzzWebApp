@@ -1,26 +1,13 @@
 ﻿@page
 @model Legion1.Pages.AddressListModel
 
-<p>Last selected number</p>
-@if (Model.Address != null && ModelState.IsValid)
+@if (Model.Legion != null)
 {
+<p><span>Last Selected Number: </span>@Model.Legion.Number</p>
+<p><span>Time: </span>@Model.Legion.Data </p>
+<p><span>Result: </span>@Model.Legion.Result</p>
+
+    
 
 
-    <p>  @Html.DisplayNameFor(model => Model.Address.Number):@Model.Address.Number </p>
-    <span>Data i Czas:</span> @DateTime.Now
-
-    String result = "";
-    if (Model.Address.Number % 3 == 0) result += "Fizz";
-    if (Model.Address.Number % 5 == 0) result += "Buzz";
-    if (result == String.Empty) result += "The number you entered is neither Fizz nor Buzz";
-
-
-
-    <p></p>
-    if (result != "")
-    {
-            <span>Result: @result</span>
-        }
-
-
-  }
+}
