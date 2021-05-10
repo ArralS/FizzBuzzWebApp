@@ -8,22 +8,25 @@ using System.Threading.Tasks;
 using Legion1.Models;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-
+using Legion1.Data;
 
 namespace Legion1.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        private readonly NumberContext _context;
         [BindProperty]
         public FizzBuzz Address { get; set; }
         
         public string Name { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILogger<IndexModel> logger, NumberContext context)
         {
             _logger = logger;
+            _context = context;
         }
+
         public String GetResult(int Number)
         {
 
@@ -41,13 +44,14 @@ namespace Legion1.Pages
         }
         public IActionResult OnPost()
         {
-
-          
+                      
             if (ModelState.IsValid)
             {
                 Name = GetResult(Address.Number);
                 HttpContext.Session.SetString("SessionAddress",
                 JsonConvert.SerializeObject(new Recent() { Number = Address.Number, Result = Name, Data = DateTime.Now }));
+                _context.Add(new Recent() { Number = Address.Number, Result = Name, Data = DateTime.Now });
+                _context.SaveChanges();
                 return Page();
             }
             return Page();

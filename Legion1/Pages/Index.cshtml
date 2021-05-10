@@ -7,18 +7,18 @@
 <div class="text-center">
     <h1 class="display-4">Welcome in FizzBuzzApp</h1>
     <form method="post">
-       
-          
+
+        
         <div class="text-center">
             <label asp-for="Address.Number"></label><br />
             <input asp-for="Address.Number" /><br />
             <strong> <span asp-validation-for="Address.Number" class="text-danger"></span> </strong>
-            @Model.Name
+         @Model.Name
 
 
         </div>
         <p></p>
-       
+
         <div class="text-center">
             <button class="btn btn-primary" type="submit">Zatwierdź</button>
         </div>

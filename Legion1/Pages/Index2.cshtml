@@ -1,0 +1,22 @@
+﻿@page
+@model Legion1.Pages.Index2Model
+@using System.Linq;
+@{
+    @if (Model.Results!=null && Model.Results.Count > 0)
+    {
+        foreach (var item in Model.Results)
+        {
+        <p><span>@item.Number </span><span>@item.Result</span> <span>@item.Data</span> <span> </span> </p>
+        <form method="post"><input type="hidden" value=@item.ID asp-for="id"><button class="btn btn-primary" type="submit">Zatwierdź</button>
+        </form>
+    }
+
+
+
+
+
+
+    }
+
+
+    }
